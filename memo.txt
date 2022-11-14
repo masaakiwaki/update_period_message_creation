@@ -1,0 +1,32 @@
+===
+    <button type="button" id="btn">Read</button>
+
+***
+    async function copyToClipboard(obj) {
+    const element = obj.previousElementSibling;
+    // クリップボードAPIが使え、且つ、値が空でない時
+    if (navigator.clipboard && !element.value == false) {
+      await navigator.clipboard.writeText(element.value);
+      alert("コピーされました！");
+    } else {
+      alert("コピーされませんでした！");
+    }
+  }
+
+
+
+  ===
+      <div class="input-container">
+        <input type="text" id="copyText" placeholder="入力してください。" >
+        <button onclick="copyToClipboard(this)">
+            Copy Text
+        </button>
+    </div>
+
+***
+
+
+document.getElementById('btn').addEventListener('click', async () => {
+    const text = await navigator.clipboard.readText();
+    console.log(text);
+    });
