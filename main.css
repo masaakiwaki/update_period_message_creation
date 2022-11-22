@@ -1,0 +1,14 @@
+.container{
+    font-size: 16px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.display_info{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}

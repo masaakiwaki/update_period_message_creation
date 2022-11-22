@@ -1,3 +1,52 @@
+let displapyInfo = document.getElementById("displapyInfo");
+
+
+
+let itemNameDisplay = document.createElement("label");
+itemNameDisplay.setAttribute("class", "displapyInfoChild")
+itemNameDisplay.innerHTML = "商品名";
+displapyInfo.appendChild(itemNameDisplay);
+
+
+
+let itemNameInput = document.createElement("input");
+itemNameInput.setAttribute("class", "displapyInfoChild")
+itemNameInput.setAttribute("type", "text");
+displapyInfo.appendChild(itemNameInput);
+
+
+
+let periodDisplay = document.createElement("label");
+periodDisplay.setAttribute("class", "displapyInfoChild");
+periodDisplay.innerHTML = "期間"
+displapyInfo.appendChild(periodDisplay);
+
+
+
+let periodInput = document.createElement("input");
+periodInput.setAttribute("class", "displapyInfoChild");
+displapyInfo.appendChild(periodInput);
+
+
+
+let periodSelect = document.createElement("select");
+periodSelect.setAttribute("class", "displapyInfoChild");
+
+let periodSelectItems = ["年", "月", "日"];
+for (let i = 0; i < periodSelectItems.length; i++) {
+  console.log(periodSelectItems[i]);
+  let periodSelectItem = document.createElement("option");
+  periodSelectItem.setAttribute("value", periodSelectItems[i]);
+  periodSelectItem.innerHTML = periodSelectItems[i];
+  periodSelect.appendChild(periodSelectItem);
+}
+displapyInfo.appendChild(periodSelect);
+
+
+
+
+
+
 function clickBtn1() {
     const digit = Number(document.getElementById("digit").value);
     const item = document.getElementById("item").value;
