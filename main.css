@@ -6,9 +6,13 @@
 }
 
 .display_info{
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     width: 400px;
     height: 400px;
     margin: 0 auto;
+}
+
+.displapyInfoChildLabel{
+    margin: 20px 10px;
 }

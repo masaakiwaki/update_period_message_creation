@@ -2,32 +2,36 @@ let displapyInfo = document.getElementById("displapyInfo");
 
 
 
+let blockItem = document.createElement("div");
+blockItem.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
+
 let itemNameDisplay = document.createElement("label");
-itemNameDisplay.setAttribute("class", "displapyInfoChild")
+itemNameDisplay.setAttribute("class", "displapyInfoChild displapyInfoChildLabel");
 itemNameDisplay.innerHTML = "商品名";
-displapyInfo.appendChild(itemNameDisplay);
-
-
+// displapyInfo.appendChild(itemNameDisplay);
+blockItem.appendChild(itemNameDisplay);
 
 let itemNameInput = document.createElement("input");
-itemNameInput.setAttribute("class", "displapyInfoChild")
+itemNameInput.setAttribute("class", "displapyInfoChild displapyInfoChildInput")
 itemNameInput.setAttribute("type", "text");
-displapyInfo.appendChild(itemNameInput);
+// displapyInfo.appendChild(itemNameInput);
+blockItem.appendChild(itemNameInput);
+
+displapyInfo.appendChild(blockItem);
 
 
+
+let blockPeriod = document.createElement("div");
+blockPeriod.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
 
 let periodDisplay = document.createElement("label");
-periodDisplay.setAttribute("class", "displapyInfoChild");
+periodDisplay.setAttribute("class", "displapyInfoChild displapyInfoChildLabel");
 periodDisplay.innerHTML = "期間"
-displapyInfo.appendChild(periodDisplay);
-
-
+blockPeriod.appendChild(periodDisplay);
 
 let periodInput = document.createElement("input");
-periodInput.setAttribute("class", "displapyInfoChild");
-displapyInfo.appendChild(periodInput);
-
-
+periodInput.setAttribute("class", "displapyInfoChild displapyInfoChildInput");
+blockPeriod.appendChild(periodInput);
 
 let periodSelect = document.createElement("select");
 periodSelect.setAttribute("class", "displapyInfoChild");
@@ -40,11 +44,27 @@ for (let i = 0; i < periodSelectItems.length; i++) {
   periodSelectItem.innerHTML = periodSelectItems[i];
   periodSelect.appendChild(periodSelectItem);
 }
-displapyInfo.appendChild(periodSelect);
+blockPeriod.appendChild(periodSelect);
+displapyInfo.appendChild(blockPeriod);
 
 
 
 
+let blockStartPeriod = document.createElement("div");
+blockStartPeriod.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
+
+
+let startPeriodDisplay = document.createElement("label");
+startPeriodDisplay.setAttribute("class", "displapyInfoChild displapyInfoChildLabel")
+startPeriodDisplay.innerHTML = "保守開始日";
+blockStartPeriod.appendChild(startPeriodDisplay);
+
+
+let selectPeriodDate = document.createElement("input");
+selectPeriodDate.setAttribute("class", "displapyInfoChild displapyInfoChildInput")
+selectPeriodDate.setAttribute('type', 'date')
+blockStartPeriod.appendChild(selectPeriodDate);
+displapyInfo.appendChild(blockStartPeriod);
 
 
 function clickBtn1() {
