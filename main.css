@@ -13,6 +13,12 @@
     margin: 0 auto;
 }
 
+.displapyInfoChildBlock{
+    margin: 10px;
+}
+
 .displapyInfoChildLabel{
-    margin: 20px 10px;
+    display: inline-block;
+    /* text-align: right; */
+    width: 100px;
 }
