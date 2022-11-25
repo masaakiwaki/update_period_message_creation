@@ -80,10 +80,6 @@ blockButton.appendChild(generateButton);
 displapyInfo.appendChild(blockButton);
 
 
-let aaa = () => {
-  alert("test");
-}
-
 let test = document.getElementById('generateButton')
 test.addEventListener("click", clickBtn1); 
 
