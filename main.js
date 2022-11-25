@@ -68,15 +68,22 @@ displapyInfo.appendChild(blockStartPeriod);
 
 
 let blockButton = document.createElement("div");
-blockButton.setAttribute("class", "btn displapyInfoChild displapyInfoChildBlock");
-
+blockButton.setAttribute("class", "displapyInfoChild displapyInfoChildBlock displapyInfoChildBlockButton");
 
 let generateButton = document.createElement("a");
 generateButton.innerHTML = "作成";
+generateButton.setAttribute("class", "original-button");
+generateButton.setAttribute("id", "generateButton");
 blockButton.appendChild(generateButton);
 displapyInfo.appendChild(blockButton);
 
 
+let aaa = () => {
+  alert("test");
+}
+
+let test = document.getElementById('generateButton')
+test.addEventListener("click", aaa); 
 
 function clickBtn1() {
     const digit = Number(document.getElementById("digit").value);
