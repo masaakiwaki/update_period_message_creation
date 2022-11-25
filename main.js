@@ -8,13 +8,12 @@ blockItem.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
 let itemNameDisplay = document.createElement("label");
 itemNameDisplay.setAttribute("class", "displapyInfoChild displapyInfoChildLabel");
 itemNameDisplay.innerHTML = "商品名";
-// displapyInfo.appendChild(itemNameDisplay);
 blockItem.appendChild(itemNameDisplay);
 
 let itemNameInput = document.createElement("input");
-itemNameInput.setAttribute("class", "displapyInfoChild displapyInfoChildInput")
+itemNameInput.setAttribute("class", "displapyInfoChild displapyInfoChildInput");
+itemNameInput.setAttribute("id", "item");
 itemNameInput.setAttribute("type", "text");
-// displapyInfo.appendChild(itemNameInput);
 blockItem.appendChild(itemNameInput);
 
 displapyInfo.appendChild(blockItem);
@@ -31,6 +30,7 @@ blockPeriod.appendChild(periodDisplay);
 
 let periodInput = document.createElement("input");
 periodInput.setAttribute("class", "displapyInfoChild displapyInfoChildInput");
+periodInput.setAttribute("id", "digit");
 blockPeriod.appendChild(periodInput);
 
 let periodSelect = document.createElement("select");
@@ -40,6 +40,7 @@ let periodSelectItems = ["年", "月", "日"];
 for (let i = 0; i < periodSelectItems.length; i++) {
   console.log(periodSelectItems[i]);
   let periodSelectItem = document.createElement("option");
+  periodSelectItem.setAttribute("id", "pref");
   periodSelectItem.setAttribute("value", periodSelectItems[i]);
   periodSelectItem.innerHTML = periodSelectItems[i];
   periodSelect.appendChild(periodSelectItem);
@@ -62,7 +63,8 @@ blockStartPeriod.appendChild(startPeriodDisplay);
 
 let selectPeriodDate = document.createElement("input");
 selectPeriodDate.setAttribute("class", "displapyInfoChild displapyInfoChildInput")
-selectPeriodDate.setAttribute('type', 'date')
+selectPeriodDate.setAttribute("id", "start");
+selectPeriodDate.setAttribute('type', 'date');
 blockStartPeriod.appendChild(selectPeriodDate);
 displapyInfo.appendChild(blockStartPeriod);
 
@@ -71,7 +73,7 @@ let blockButton = document.createElement("div");
 blockButton.setAttribute("class", "displapyInfoChild displapyInfoChildBlock displapyInfoChildBlockButton");
 
 let generateButton = document.createElement("a");
-generateButton.innerHTML = "作成";
+generateButton.innerHTML = "クリップボードにコピー";
 generateButton.setAttribute("class", "original-button");
 generateButton.setAttribute("id", "generateButton");
 blockButton.appendChild(generateButton);
@@ -83,7 +85,7 @@ let aaa = () => {
 }
 
 let test = document.getElementById('generateButton')
-test.addEventListener("click", aaa); 
+test.addEventListener("click", clickBtn1); 
 
 function clickBtn1() {
     const digit = Number(document.getElementById("digit").value);
@@ -114,15 +116,8 @@ function clickBtn1() {
 
     console.log(result_text);
 
-    document.getElementById("span1").textContent = result_text;
-
-    navigator.clipboard.writeText(result_text)
-    .then(() => {
-      console.log('成功');
-    })
-    .catch(err => {
-      console.error('ユーザが拒否、もしくはなんらかの理由で失敗');
-    });
+    navigator.clipboard.writeText(result_text);
+    window.alert(result_text);
 
   }
 
