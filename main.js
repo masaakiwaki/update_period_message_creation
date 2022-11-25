@@ -67,6 +67,17 @@ blockStartPeriod.appendChild(selectPeriodDate);
 displapyInfo.appendChild(blockStartPeriod);
 
 
+let blockButton = document.createElement("div");
+blockButton.setAttribute("class", "btn displapyInfoChild displapyInfoChildBlock");
+
+
+let generateButton = document.createElement("a");
+generateButton.innerHTML = "作成";
+blockButton.appendChild(generateButton);
+displapyInfo.appendChild(blockButton);
+
+
+
 function clickBtn1() {
     const digit = Number(document.getElementById("digit").value);
     const item = document.getElementById("item").value;
