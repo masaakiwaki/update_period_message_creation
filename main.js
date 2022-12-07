@@ -7,7 +7,7 @@ blockItem.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
 
 let itemNameDisplay = document.createElement("label");
 itemNameDisplay.setAttribute("class", "displapyInfoChild displapyInfoChildLabel");
-itemNameDisplay.innerHTML = "商品名";
+itemNameDisplay.innerHTML = "対象";
 blockItem.appendChild(itemNameDisplay);
 
 let itemNameInput = document.createElement("input");
@@ -73,7 +73,7 @@ let blockButton = document.createElement("div");
 blockButton.setAttribute("class", "displapyInfoChild displapyInfoChildBlock displapyInfoChildBlockButton");
 
 let generateButton = document.createElement("a");
-generateButton.innerHTML = "クリップボードにコピー";
+generateButton.innerHTML = "期間表示";
 generateButton.setAttribute("class", "original-button");
 generateButton.setAttribute("id", "generateButton");
 blockButton.appendChild(generateButton);
@@ -113,7 +113,71 @@ function clickBtn1() {
     console.log(result_text);
 
     navigator.clipboard.writeText(result_text);
-    window.alert(result_text);
+    
+
+    if (document.getElementById("resultBlock") == null){
+
+      createResultElement("対象・期間", "result");
+      createResultElement("開始", "resultStart");
+      createResultElement("終了", "resultEnd");
+
+    }
+
+    document.getElementById("resultInput").value = result_text;
+    document.getElementById("resultStartInput").value = changeDateTaxt(start_date);
+    document.getElementById("resultEndInput").value = changeDateTaxt(end_date);
+
+
+    let copyButton = document.getElementsByClassName("resultButton");
+    let copyButtons = Array.from(copyButton );
+
+    copyButtons.forEach(function(element) {
+      element.addEventListener("click", valueCopy); 
+    })
+
+    function valueCopy(event) {
+
+      targetInputElement = event.target.id.replace("Button", "Input");
+      
+      navigator.clipboard.writeText(document.getElementById(targetInputElement).value);
+
+    }
 
   }
+
+
+
+
+
+
+const changeDateTaxt = (dateText) => {
+  return dateText.replace(/\./g, "/");
+
+}
+
+const createResultElement = (displayValue, resultText) => {
+  let blockItem = document.createElement("div");
+  blockItem.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
+  blockItem.setAttribute("id", "resultBlock");
+
+  let resultDisplay = document.createElement("label");
+  resultDisplay.setAttribute("class", "displapyInfoChild displapyInfoChildLabel");
+  resultDisplay.innerHTML = displayValue;
+  blockItem.appendChild(resultDisplay);
+
+  let resultInput = document.createElement("input");
+  resultInput.setAttribute("class", "displapyInfoChild resultInput");
+  resultInput.setAttribute("id", `${resultText}Input`);
+  resultInput.setAttribute("type", "text");
+  blockItem.appendChild(resultInput);
+
+  let resultButton = document.createElement("input");
+  resultButton.setAttribute("class", "displapyInfoChild resultButton");
+  resultButton.setAttribute("id", `${resultText}Button`);
+  resultButton.setAttribute("type", "button");
+  resultButton.setAttribute("value", "コピー");
+  blockItem.appendChild(resultButton);
+
+  displapyInfo.appendChild(blockItem);
+}
 
