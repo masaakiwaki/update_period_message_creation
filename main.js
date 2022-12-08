@@ -157,7 +157,7 @@ const changeDateTaxt = (dateText) => {
 
 const createResultElement = (displayValue, resultText) => {
   let blockItem = document.createElement("div");
-  blockItem.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
+  blockItem.setAttribute("class", "displapyInfoChild displapyInfoChildBlock displapyInfoChildBlockResult");
   blockItem.setAttribute("id", "resultBlock");
 
   let resultDisplay = document.createElement("label");
@@ -170,6 +170,8 @@ const createResultElement = (displayValue, resultText) => {
   resultInput.setAttribute("id", `${resultText}Input`);
   resultInput.setAttribute("type", "text");
   blockItem.appendChild(resultInput);
+  
+  
 
   let resultButton = document.createElement("input");
   resultButton.setAttribute("class", "displapyInfoChild resultButton");
