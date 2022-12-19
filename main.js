@@ -35,6 +35,7 @@ blockPeriod.appendChild(periodInput);
 
 let periodSelect = document.createElement("select");
 periodSelect.setAttribute("class", "displapyInfoChild");
+periodSelect.setAttribute("id", "periodSelect");
 
 let periodSelectItems = ["年", "月", "日"];
 for (let i = 0; i < periodSelectItems.length; i++) {
@@ -86,9 +87,8 @@ test.addEventListener("click", clickBtn1);
 function clickBtn1() {
     const digit = Number(document.getElementById("digit").value);
     const item = document.getElementById("item").value;
-    const pref = document.getElementById("pref").value;
+    const pref = periodSelectValue = document.getElementById("periodSelect").value;
     const start = document.getElementById("start").value;
-    
 
 
     let start_dt = new Date(start);
