@@ -37,7 +37,7 @@ let periodSelect = document.createElement("select");
 periodSelect.setAttribute("class", "displapyInfoChild");
 periodSelect.setAttribute("id", "periodSelect");
 
-let periodSelectItems = ["年", "月", "日"];
+let periodSelectItems = ["年", "日"];
 for (let i = 0; i < periodSelectItems.length; i++) {
   console.log(periodSelectItems[i]);
   let periodSelectItem = document.createElement("option");
