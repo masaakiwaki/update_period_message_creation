@@ -31,6 +31,7 @@ const createAmountString = (resultAmout, taxType) => {
                                     `\xA5${resultAmoutYenStyle}(${taxType})`,
                                     `${resultAmoutYenStyle}円(${taxType})`,
                                     ]
+                                    
 
     let resultAmountArray = []
     for (i in resultAmoutYenStyleArray) {
@@ -43,6 +44,55 @@ const createAmountString = (resultAmout, taxType) => {
 
 }
 
+const DisplayPeriod = (dateObject) => {
+    let resultDisplayArray = []
+    const displayStyleArray = [
+        addDelimiter(dateObject, delimiter = "/", digitValue=1),
+        addDelimiter(dateObject, delimiter = "/", digitValue=2),
+        addDelimiter(dateObject, delimiter = "-", digitValue=1),
+        addDelimiter(dateObject, delimiter = "-", digitValue=2),
+        addDelimiter(dateObject, delimiter = "_", digitValue=1),
+        addDelimiter(dateObject, delimiter = "_", digitValue=2),
+        addDelimiter(dateObject, delimiter = ".", digitValue=1),
+        addDelimiter(dateObject, delimiter = ".", digitValue=2),
+    ]
+
+    for(i in displayStyleArray){
+        resultDisplayArray.push(displayStyleArray[i])
+    }
+
+    return resultDisplayArray
+}
+
+
+const splitDate = (dateObject) => {
+    return {"year": dateObject.getFullYear(), "month": Number(dateObject.getMonth() + 1), "day": dateObject.getDate()}
+}
+
+
+const dateChangeTwoDigit = (dateValue) => {
+    const targetValue = String(dateValue)
+    if (targetValue.length == 1) {
+        const result = `0${targetValue}`
+        return result
+    } else {
+        const result = targetValue
+        return result
+    }
+}
+
+const addDelimiter = (dateObject, delimiter, digitValue=1) => {
+    if (digitValue == 1) {
+        const result = dateObject["year"] + delimiter + dateObject["month"] + delimiter + dateObject["day"]
+        return result
+    }
+    if (digitValue == 2) {
+        const result = dateObject["year"] + delimiter + dateChangeTwoDigit(dateObject["month"]) + delimiter + dateChangeTwoDigit(dateObject["day"])
+        return result
+    }
+}
+
+
 
 const appdata = {
     data() {
@@ -53,6 +103,8 @@ const appdata = {
             startDate: "",
             endDate: "", 
             resultText: "",
+            startDateArray: [],
+            endDateArray: []
         }
         },
     methods:{
@@ -70,14 +122,15 @@ const appdata = {
             
             end_dt.setDate(end_dt.getDate() - 1)
             
+            this.startDate = splitDate(start_dt)
+            this.endDate = splitDate(end_dt)
             
-            this.startDate = (start_dt.getFullYear() + '.' + Number(start_dt.getMonth() + 1) + '.' + start_dt.getDate());
-            this.endDate = (end_dt.getFullYear() + '.' + Number(end_dt.getMonth() + 1) + '.' + end_dt.getDate());
-            alert(this.startDate)
-
-            this.resultText = (this.itemName + ': '+ this.startDate + ' ～ ' + this.endDate);
-            
+            this.resultText = `${this.itemName}: ${addDelimiter(dateObject = this.startDate , delimiter = ".", digitValue=1)} 〜 ${addDelimiter(dateObject = this.endDate , delimiter = ".", digitValue=1)}`
+            this.startDateArray = DisplayPeriod(this.startDate)
+            this.endDateArray = DisplayPeriod(this.endDate)
             },
+
+            
 
 
 

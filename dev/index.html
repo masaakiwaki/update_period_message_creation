@@ -55,22 +55,22 @@
                 <button type="button" class="btn btn-outline-primary" id="periodDay" v-on:click="createPeriod">日</button>
             </div>
 
-            <div class="input-group mt-3">
-                <span class="input-group-text">消費税</span>
-                <input type="text" class="form-control" v-model="resultTax" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group mt-3" v-if="resultText">
+                <span class="input-group-text">保守対象</span>
+                <input type="text" class="form-control" v-model="resultText" aria-label="Amount (to the nearest dollar)">
             </div>
 
             <div class="list-container mt-3" v-if="inputStartDate">
                 <div class="list-group me-3" style="max-width: 50%;">
-                    <a class="list-group-item list-group-item-action active text-center" aria-current="true">税別</a>
-                    <div v-for="outTaxItem in resultTaxOutAmoutStyleArray" :key="outTaxItem ">
-                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(outTaxItem)">{{outTaxItem }}</a>
+                    <a class="list-group-item list-group-item-action active text-center" aria-current="true">契約開始日</a>
+                    <div v-for="startDate in startDateArray" :key="outTaxItem ">
+                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(startDate)">{{ startDate }}</a>
                     </div>
                 </div>
                 <div class="list-group" style="max-width: 50%;">
-                    <a class="list-group-item list-group-item-action active text-center" aria-current="true">税込</a>
-                    <div v-for="inTaxItem in resultTaxInAmoutStyleArray" :key="inTaxItem">
-                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(inTaxItem)">{{inTaxItem }}</a>
+                    <a class="list-group-item list-group-item-action active text-center" aria-current="true">契約終了日</a>
+                    <div v-for="endDate in endDateArray" :key="inTaxItem">
+                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(endDate)">{{ endDate }}</a>
                     </div>
                 </div>
             </div>
