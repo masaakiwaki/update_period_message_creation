@@ -23,27 +23,6 @@ const isIntegerValidation= (str) => {
 
 
 
-const createAmountString = (resultAmout, taxType) => {
-    let resultAmoutYenStyle = resultAmout.toLocaleString()
-    let resultAmoutYenStyleArray = [resultAmout, 
-                                    resultAmoutYenStyle,
-                                    `\xA5${resultAmoutYenStyle}.-`,
-                                    `\xA5${resultAmoutYenStyle}(${taxType})`,
-                                    `${resultAmoutYenStyle}円(${taxType})`,
-                                    ]
-                                    
-
-    let resultAmountArray = []
-    for (i in resultAmoutYenStyleArray) {
-        resultAmountArray.push(resultAmoutYenStyleArray[i])
-        console.log(resultAmountArray[i])
-
-    }
-
-    return resultAmountArray 
-
-}
-
 const DisplayPeriod = (dateObject) => {
     let resultDisplayArray = []
     const displayStyleArray = [
@@ -55,6 +34,8 @@ const DisplayPeriod = (dateObject) => {
         addDelimiter(dateObject, delimiter = "_", digitValue=2),
         addDelimiter(dateObject, delimiter = ".", digitValue=1),
         addDelimiter(dateObject, delimiter = ".", digitValue=2),
+        dateObject["year"] + "年" + dateObject["month"] + "月" + dateObject["day"] + "日",
+        dateObject["year"] + dateChangeTwoDigit(dateObject["month"]) + dateChangeTwoDigit(dateObject["day"])
     ]
 
     for(i in displayStyleArray){
